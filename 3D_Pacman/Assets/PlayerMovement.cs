@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody rb;
     public Transform camera;
+    public float speed = 20f;
 
     public float sensitivity;
     public float revolutionTime;
@@ -15,6 +16,11 @@ public class PlayerMovement : MonoBehaviour
     private float verticalInput;
     private float rotationVal;
 
+
+    void Start() {
+        rb = GetComponent<Rigidbody>();
+    }
+
     // Update is called once per frame
     void Update(){
 
@@ -23,14 +29,14 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 c_z;
         Vector3 c_x = camera.forward * verticalInput;
-        if (verticalInput != 0)
-        {
+        if (verticalInput != 0) {
             c_z = camera.right * horizontalInput * Mathf.Cos(camera.eulerAngles.y * Mathf.Deg2Rad);
-
         }
-        else{
+        else {
             c_z = new Vector3(0, 0, 0);
         }
+
+        rb.velocity = (c_z + c_x) * speed;
 
         transform.position += (c_x + c_z) * sensitivity;
         

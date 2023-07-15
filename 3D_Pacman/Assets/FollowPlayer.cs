@@ -18,8 +18,6 @@ public class FollowPlayer : MonoBehaviour
         // Reset's the camera's position 
         transform.position = new Vector3(0, 0, 0);
         cameraPos.y -= player.position.y;
-
-
         
     }
 
@@ -41,8 +39,6 @@ public class FollowPlayer : MonoBehaviour
 
     private void GetInput(){
         horizontalInput = Input.GetAxis("Horizontal");
-
-
     }
 
     
