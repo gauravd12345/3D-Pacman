@@ -19,7 +19,7 @@ public class FoodPlacement : MonoBehaviour
     {
         if (Physics.OverlapSphere(transform.position, 1f) != null) {
             Destroy(this);
-            Scoring.score += 10;
+            
         }
     }
 }
