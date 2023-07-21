@@ -2,11 +2,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Rigidbody rb;
+    public Rigidbody playerRigidBody;
     public Transform camera;
-    public float speed = 20f;
 
-    public float sensitivity;
+    public float speed;
     public float revolutionTime;
     public float maxRotationAngle;
 
@@ -15,7 +14,8 @@ public class PlayerMovement : MonoBehaviour
     private float rotationVal;
 
     void Start() {
-        rb = GetComponent<Rigidbody>();
+        playerRigidBody = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
@@ -33,11 +33,10 @@ public class PlayerMovement : MonoBehaviour
             c_z = new Vector3(0, 0, 0);
         }
 
-        rb.velocity = (c_z + c_x) * speed;
+        playerRigidBody.velocity = ((c_x + c_z) * speed);
 
-        transform.position += (c_x + c_z) * sensitivity;
         
-        float rotationCheck = horizontalInput * 360 * Time.deltaTime / revolutionTime;
+        float rotationCheck = (horizontalInput * maxRotationAngle * Time.deltaTime) / revolutionTime;
         rotationVal += rotationCheck;
 
         

@@ -8,7 +8,6 @@ public class FollowPlayer : MonoBehaviour
     public Transform player;
     public Vector3 cameraPos;
     
-    
     private float horizontalInput;
     private float verticalInput;
 
@@ -33,7 +32,10 @@ public class FollowPlayer : MonoBehaviour
 
 
         transform.position = player.position + localOffset;
+
+
         transform.rotation = player.rotation;
+
 
     }
 
